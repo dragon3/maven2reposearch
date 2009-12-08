@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+{% if artifacts %}
+<dependencies>
+{% for artifact in artifacts %}
+  <dependency>
+	<groupId>{{ artifact.group_id|escape }}</groupId>
+	<artifactId>{{ artifact.artifact_id|escape }}</artifactId>
+	<version>{{ artifact.version|escape }}</version>
+  </dependency>
+{% endfor %}
+</dependencies>
+{% endif %}

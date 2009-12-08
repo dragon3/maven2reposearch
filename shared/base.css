@@ -1,0 +1,40 @@
+HTML {
+	font-family: sans-serif;
+}
+
+BODY {
+	background-color: #FFFFFF;
+	margin: 25px 18px 30px 18px;
+}
+
+h1 {
+  margin-bottom: 8px;
+}
+
+#search {
+
+}
+
+.search-box {
+  font-size: 1.25em;
+  width: 220px;
+  ime-mode: disabled;
+}
+.search-button {
+  font-size: 1.25em;
+}
+
+#result TABLE {
+	border-collapse: collapse;
+	border: 1px solid #999999;
+}
+#result TABLE TR TH {
+	padding: .3em .5em .3em .5em;
+	background-color: #EEEEEE;
+	border-left: 1px solid #999999;
+}
+#result TABLE TR TD {
+	border: 1px solid #999;
+	padding: 0.5em;
+}
+

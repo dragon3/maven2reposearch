@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<title>Maven2 Repo Search {% if keyword %}| {{ keyword|escape }} {% endif %}</title>
+	<link rel="shortcut icon" href="/shared/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/shared/base.css" />
+	<script type="text/javascript">
+	  //<![CDATA[
+function emphasizeRow(tr, on) {
+	if (on) {
+		tr.style.background = "#F5F5F5";
+	} else {
+		tr.style.background = "#FFFFFF";
+	}
+}
+//]]>
+	</script>
+  </head>
+  <body>
+
+	<h1><a href="/"><img src="/shared/logo.gif" width="292" height="34" alt="Maven Repo Search" border="0" /></a></h1>
+	<div id="search">
+	  <form method="get" action="/search">
+		<input type="text" name="keyword" value="{{ keyword|escape }}" class="search-box" /> <input type="submit" value="Search" class="search-button" />
+	  </form>
+	</div>
+
+	<div style="margin-top: 1em; font-size: 80%;">
+	  <!--<div align="right" style="color:#999">{{ total_count }} artifacts is indexed.</div>-->
+	  <!--<div align="right" style="color:#999">keyword = {{ keyword|escape }}</div>-->
+	  <hr size="1"/>
+	</div>
+
+	{% if artifacts %}
+	<div id="result">
+	  <p class="message">{{ artifacts|length }} artifacts were found.</p>
+	  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+		<thead>
+		  <tr>
+			<th>groupId</th>
+			<th>artifactId</th>
+			<th>version</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for artifact in artifacts %}
+		  <tr onmouseover="emphasizeRow(this, true)" onmouseout="emphasizeRow(this, false)">
+			<td>{{ artifact.group_id|escape }}</td>
+			<td>{{ artifact.artifact_id|escape }}</td>
+			<td>{{ artifact.version|escape }}</td>
+		  </tr>
+		  {% endfor %}
+		</tbody>
+	  </table>
+	</div>
+	{% endif %}
+
+	<div align="right" style="margin-top: 1em;">
+	  <img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif" alt="Powered by Google App Engine" />	</div>
+  </body>
+</html>

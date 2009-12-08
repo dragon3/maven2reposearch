@@ -1,0 +1,39 @@
+application: maven2reposearch
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /shared
+  static_dir: shared
+
+- url: /load
+  script: loader.py
+  login: admin
+
+- url: /drop
+  script: search.py
+  login: admin
+  
+- url: /.*
+  script: search.py
+
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+skip_files: |
+ ^(.*/)?(
+ (.*\.csv)|
+ (.*\.sh)|
+ (app\.yaml)|
+ (app\.yml)|
+ (index\.yaml)|
+ (index\.yml)|
+ (#.*#)|
+ (.*~)|
+ (.*\.py[co])|
+ (.*/RCS/.*)|
+ (\..*)|
+ )$
+  
