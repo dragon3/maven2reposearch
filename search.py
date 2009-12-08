@@ -12,7 +12,7 @@ class Search(webapp.RequestHandler):
             format = 'html'
         artifacts = []
         if keyword:
-            for i in ['1','2']:
+            for i in ['1','2','3','4']:
                 file = open('central-index.' + i + '.txt', 'r')
                 while 1:
                     lines = file.readlines(100000)
